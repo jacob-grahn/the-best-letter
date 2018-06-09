@@ -1,10 +1,12 @@
 pipeline {
+  def app
+
   agent {
     docker {
       image 'node:8'
     }
-
   }
+  
   stages {
     stage('Build') {
       steps {
