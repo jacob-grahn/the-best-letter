@@ -6,7 +6,7 @@ pipeline {
       image 'node:8'
     }
   }
-  
+
   stages {
     stage('Build') {
       steps {
@@ -18,8 +18,10 @@ pipeline {
         sh 'npm run test'
       }
     }
-    stage('Deploy') {
+    stage('Build Image') {
       app = docker.build('the-best-letter/the-best-letter')
+    }
+    stage('Push Image') {
       docker.withRegistry('https://gcr.io') {
           app.push("${env.BUILD_NUMBER}")
           app.push("latest")
