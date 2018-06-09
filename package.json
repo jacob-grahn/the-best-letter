@@ -1,0 +1,28 @@
+{
+  "name": "the-best-letter",
+  "version": "1.0.0",
+  "description": "just testing",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^23.1.0",
+    "koa": "^2.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "echo 'yay'",
+    "test": "jest",
+    "start": "node index",
+    "build-image": "docker build -t the-best-letter .",
+    "start-image": "docker run -it --name the-best-letter --rm -p 8080:8080 the-best-letter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacob-grahn/the-best-letter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacob-grahn/the-best-letter/issues"
+  },
+  "homepage": "https://github.com/jacob-grahn/the-best-letter#readme"
+}
