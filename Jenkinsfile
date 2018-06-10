@@ -2,14 +2,13 @@ pipeline {
 
   agent {
     docker {
-      image 'node:8'
+      image 'node:8-onbuild'
     }
   }
 
   stages {
     stage('Build') {
       steps {
-        sh 'npm install'
         sh 'npm run build'
       }
     }
