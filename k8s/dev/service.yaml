@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: the-best-letter-dev
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: backend
+      labels:
+        app: the-best-letter
+        role: backend
+        env: dev
+    spec:
+      containers:
+      - name: backend
+        image: gcr.io/the-best-letter/the-best-letter
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "100m"
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+        ports:
+        - name: backend
+          containerPort: 8080
