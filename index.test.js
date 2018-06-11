@@ -1,5 +1,5 @@
 /* global test, expect */
 
 test('true === true', () => {
-  expect(true).toEqual(true)
+  expect(true).toEqual(false)
 })
