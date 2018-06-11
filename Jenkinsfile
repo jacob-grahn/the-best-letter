@@ -1,5 +1,4 @@
 pipeline {
-  def app
 
   agent {
     docker {
@@ -18,13 +17,10 @@ pipeline {
         sh 'npm run test'
       }
     }
-    stage('Build Image') {
+    stage('Deploy') {
       script {
+        def app
         app = docker.build('the-best-letter/the-best-letter')
-      }
-    }
-    stage('Push Image') {
-      script {
         docker.withRegistry('https://gcr.io') {
           app.push("${env.BUILD_NUMBER}")
           app.push("latest")
