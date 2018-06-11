@@ -2,11 +2,19 @@ pipeline {
 
   agent {
     docker {
-      image 'node:8'
+      image 'ubuntu'
     }
   }
 
   stages {
+    stage('Setup') {
+      steps {
+        sh 'apt update'
+        sh 'apt upgrade -y'
+        sh 'apt install nodejs -y'
+        sh 'apt install docker.io -y'
+      }
+    }
     stage('Build') {
       steps {
         sh 'npm install'
