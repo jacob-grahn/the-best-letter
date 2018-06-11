@@ -9,8 +9,6 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh 'apt update'
-        sh 'apt upgrade -y'
         sh 'apt install nodejs -y'
         sh 'apt install docker.io -y'
       }
