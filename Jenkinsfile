@@ -1,7 +1,7 @@
 pipeline {
 
   agent {
-    label 'ubuntu-1604'
+    label 'any'
   }
 
   stages {
