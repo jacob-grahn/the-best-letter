@@ -6,15 +6,17 @@ pipeline {
     }
   }
 
-  stages {
-    stage('Build') {
-      steps {
-        sh 'npm run build'
+  node {
+    stages {
+      stage('Build') {
+        steps {
+          sh 'npm run build'
+        }
       }
-    }
-    stage('Test') {
-      steps {
-        sh 'npm run test'
+      stage('Test') {
+        steps {
+          sh 'npm run test'
+        }
       }
     }
   }
