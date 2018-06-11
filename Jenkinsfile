@@ -3,12 +3,6 @@ pipeline {
   agent any
 
   stages {
-    stage('Setup') {
-      steps {
-        sh 'apt install nodejs -y'
-        sh 'apt install docker.io -y'
-      }
-    }
     stage('Build') {
       steps {
         sh 'npm install'
