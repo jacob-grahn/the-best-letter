@@ -18,10 +18,7 @@ pipeline {
       steps {
         script {
           def app
-          def project = 'the-best-letter'
-          def appName = 'the-best-letter'
           def tag = "${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
-          def imageTag = "gcr.io/${project}/${appName}:${tag}"
 
           app = docker.build('the-best-letter/the-best-letter')
           docker.withRegistry('https://gcr.io', 'gcr:jenkins-gcr') {
@@ -34,7 +31,10 @@ pipeline {
     stage('Deploy') {
       steps {
         script {
-
+          def project = 'the-best-letter'
+          def appName = 'the-best-letter'
+          def tag = "${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+          def imageTag = "gcr.io/${project}/${appName}:${tag}"
 
           withKubeConfig([credentialsId: 'k8s-credentials', serverUrl: 'https://35.199.150.246']) {
 
