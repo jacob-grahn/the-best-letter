@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: the-best-letter
-        image: gcr.io/the-best-letter/the-best-letter:latest
+        image: PRODUCTION_IMAGE
         resources:
           limits:
             memory: "500Mi"
