@@ -47,7 +47,7 @@ pipeline {
               sh("sed -i.bak 's#PRODUCTION_IMAGE#${imageTag}#' ./setup.tf")
               sh("sed -i.bak 's#BUILD_NUMBER#${env.BUILD_NUMBER}#' ./setup.tf")
               sh('terraform init')
-              sh('terraform apply -auto-approve')
+              sh('terraform apply -refresh=true -auto-approve')
               break
 
               // Roll out a dev environment
