@@ -45,6 +45,7 @@ pipeline {
               // sh("kubectl --namespace=production apply -f k8s/services/")
               // sh("kubectl --namespace=production apply -f k8s/production/")
               sh("sed -i.bak 's#PRODUCTION_IMAGE#${imageTag}#' ./setup.tf")
+              sh('terraform init')
               sh('terraform apply -auto-approve')
               break
 
