@@ -14,7 +14,7 @@ resource "kubernetes_replication_controller" "tbl-server" {
     }
     template {
       container {
-        image = "gcr.io/the-best-letter/the-best-letter:latest"
+        image = "PRODUCTION_IMAGE"
         name = "tbl-server"
         port {
           container_port = 8080

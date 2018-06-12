@@ -41,9 +41,11 @@ pipeline {
             switch (env.BRANCH_NAME) {
               // Roll out to production
               case "master":
-              sh("sed -i.bak 's#PRODUCTION_IMAGE#${imageTag}#' ./k8s/production/*.yaml")
-              sh("kubectl --namespace=production apply -f k8s/services/")
-              sh("kubectl --namespace=production apply -f k8s/production/")
+              // sh("sed -i.bak 's#PRODUCTION_IMAGE#${imageTag}#' ./k8s/production/*.yaml")
+              // sh("kubectl --namespace=production apply -f k8s/services/")
+              // sh("kubectl --namespace=production apply -f k8s/production/")
+              sh("sed -i.bak 's#PRODUCTION_IMAGE#${imageTag}#' ./setup.tf")
+              sh('terraform apply -auto-approve')
               break
 
               // Roll out a dev environment
