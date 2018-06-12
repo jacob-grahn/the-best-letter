@@ -40,7 +40,6 @@ pipeline {
               case "master":
               sh("kubectl --namespace=production apply -f k8s/services/")
               sh("kubectl --namespace=production apply -f k8s/production/")
-              sh("echo http://`kubectl --namespace=production get service/${appName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${appName}")
               break
 
               // Roll out a dev environment
