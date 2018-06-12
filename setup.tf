@@ -5,7 +5,7 @@ resource "kubernetes_replication_controller" "tbl-server" {
     name = "tbl-server"
     labels {
       App = "tbl-server"
-      Image = "PRODUCTION_IMAGE"
+      Build = "BUILD_NUMBER"
     }
   }
   spec {
