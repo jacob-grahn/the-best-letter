@@ -31,7 +31,6 @@ pipeline {
         script {
           def project = 'the-best-letter'
           def appName = 'the-best-letter'
-          def feSvcName = "${appName}-frontend"
           def imageTag = "gcr.io/${project}/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
 
           withKubeConfig([credentialsId: 'k8s-credentials', serverUrl: 'https://35.199.150.246']) {
@@ -41,7 +40,7 @@ pipeline {
               case "master":
               sh("kubectl --namespace=production apply -f k8s/services/")
               sh("kubectl --namespace=production apply -f k8s/production/")
-              sh("echo http://`kubectl --namespace=production get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${feSvcName}")
+              sh("echo http://`kubectl --namespace=production get service/${appName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${appName}")
               break
 
               // Roll out a dev environment
