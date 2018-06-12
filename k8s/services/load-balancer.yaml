@@ -11,4 +11,3 @@ spec:
     protocol: TCP
   selector:
     app: the-best-letter
-role: frontend
