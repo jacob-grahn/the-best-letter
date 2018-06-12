@@ -3,7 +3,7 @@ const app = new Koa()
 
 // response
 app.use(ctx => {
-  ctx.body = 'The best letter is... "Q"'
+  ctx.body = 'The best letter is... "T"'
 })
 
 app.listen(8080)
